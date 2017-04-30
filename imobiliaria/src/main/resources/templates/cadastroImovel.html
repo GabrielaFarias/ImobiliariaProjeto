@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Imobiliária</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous" />
+</head>
+
+ <body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Cadastro de imoveis</h1>
+		</div>
+		<div class="panel-body">
+		
+			<form class="form-inline" method="POST" th:object="${imovel}" th:action="@{/imobiliaria}" style="margin: 20px 0">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Dono do imovel" th:field="*{nomeDono}"/> 
+					<input type="text" class="form-control" placeholder="Endereço do imovel" th:field="*{endereco_imovel}"/>
+				
+					<input type="text" class="form-control" placeholder="Descrição do imovel" th:field="*{descricao}"/>
+					<button type="submit" class="btn btn-primary">Adicionar</button>
+				</div>
+			</form>
+
+			
+		
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Dono do imovel</th>
+						<th>Endereço</th>
+			
+						<th>Descrição</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="imobiliaria : ${imoveis}">
+						<td th:text="${imobiliaria.codigo}"></td>
+						<td th:text="${imobiliaria.nomeDono}"></td>
+						<td th:text="${imobiliaria.endereco_imovel}"></td>
+			
+						<td th:text="${imobiliaria.descricao}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+
+
+</html>
